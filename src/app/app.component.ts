@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ScriptService } from './script.service';
+import { Observable } from 'rxjs';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +11,26 @@ import { ScriptService } from './script.service';
 export class AppComponent implements OnInit {
 
   title = 'background-layer';
+  userText = 'default text';
+  childSliderValue = '';
+  isDarkTheme: Observable<boolean>;
 
-  constructor(private script: ScriptService) {
+  constructor(private script: ScriptService, private themeService: ThemeService) {
     this.script.load('element-a').then(data => {
       console.log('script loaded ', data);
-  }).catch(error => console.log(error));
+    }).catch(error => console.log(error));
   }
 
   ngOnInit(): void {
+    this.isDarkTheme = this.themeService.isDarkTheme;
+  }
 
+  sliderValueChanged(event: any) {
+    this.childSliderValue = event.detail;
+  }
+
+  toggleDarkTheme(checked: boolean) {
+    this.themeService.setDarkTheme(checked);
   }
 
 }
