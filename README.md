@@ -2,6 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
+## Loading javascripts for Microfrontend App
+For this project, all microfrontend elements are retrieved from `http://localhost:3000/`. The script.store contains element to script mapping; refer to [script.store.ts](./src/app/script.store.ts)
+
+Wherever these scripts (web components) are to be used, the appropriate script has to be loaded first via [script.service.ts](./src/app/script.service.ts)
+
+The loading takes place in the constructor of the component, refer to [app.component.ts](./src/app/app.component.ts)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

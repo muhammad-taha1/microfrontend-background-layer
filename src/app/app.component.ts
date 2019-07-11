@@ -16,9 +16,11 @@ export class AppComponent implements OnInit {
   isDarkTheme: Observable<boolean>;
 
   constructor(private script: ScriptService, private themeService: ThemeService) {
-    this.script.load('element-a').then(data => {
-      console.log('script loaded ', data);
-    }).catch(error => console.log(error));
+    this.script.load('element-a', 'element-b').then(data => {
+      console.log(data);
+    }
+      ).catch(error => console.error(error));
+
   }
 
   ngOnInit(): void {

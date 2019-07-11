@@ -22,11 +22,10 @@
 
     <br>
     <mat-divider></mat-divider>
-
     <div class="container">
       <element-a [parentMessage]="userText" (sliderEvent)="sliderValueChanged($event)"></element-a>
       <mat-divider [vertical]=true></mat-divider>
-      <element-b [value]="childSliderValue"></element-b>
+      <element-b [inputValue]="childSliderValue"></element-b>
     </div>
   </div>
 </div>
