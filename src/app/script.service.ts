@@ -36,7 +36,7 @@ export class ScriptService {
               let script = document.createElement('script');
               script.type = 'text/javascript';
               script.src = this.scripts[name].src;
-              script.id = name;
+              script.id = "script-"+name;
               if (script.readyState) {  //IE
                   script.onreadystatechange = () => {
                       if (script.readyState === "loaded" || script.readyState === "complete") {

@@ -3,11 +3,27 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
 ## Loading javascripts for Microfrontend App
-For this project, all microfrontend elements are retrieved from `http://localhost:3000/`. The script.store contains element to script mapping; refer to [script.store.ts](./src/app/script.store.ts)
+For this project, all microfrontend elements are retrieved from `http://localhost:3000/`. 
+There are essentially two ways of loading elements in this parent app:
+
+### Method 1 - Add script tag to html
+This method is being used currently in this project. Simply go to a component's html or index.html and add script tags:
+```
+  <script src="http://localhost:3000/file/component-A.js"></script>
+  <script src="http://localhost:3000/file/component-B.js"></script>
+```
+Refer to [index.html](./src/index.html)
+
+### Method 2 - Use script loading service
+For this method, a service is used to load scripts into appropriate components.
+<b>Note:</b> Angular's @Input with elements do not work with this approach; hence this is not being used. 
+
+
+The script.store contains element to script mapping; refer to [script.store.ts](./src/app/script.store.ts)
 
 Wherever these scripts (web components) are to be used, the appropriate script has to be loaded first via [script.service.ts](./src/app/script.service.ts)
 
-The loading takes place in the constructor of the component, refer to [app.component.ts](./src/app/app.component.ts)
+The loading takes place in the constructor of the component, commented out in this case. Refer to [app.component.ts](./src/app/app.component.ts)
 
 ## Development server
 

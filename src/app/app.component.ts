@@ -16,10 +16,15 @@ export class AppComponent implements OnInit {
   isDarkTheme: Observable<boolean>;
 
   constructor(private script: ScriptService, private themeService: ThemeService) {
-    this.script.load('element-a', 'element-b').then(data => {
-      console.log(data);
-    }
-      ).catch(error => console.error(error));
+    // this.script.load('element-a', 'element-b').then(data => {
+    //   console.log(data);
+    // }
+    //   ).catch(error => console.error(error));
+  }
+
+  ngOnDestroy(): void {
+    document.getElementById('element-a').remove();
+    document.getElementById('element-b').remove();
 
   }
 
